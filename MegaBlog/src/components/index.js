@@ -10,6 +10,7 @@ import Logo from "./Logo.jsx";
 import Postcard from './PostCard.jsx'
 import RTE from './RTE.jsx';
 import Select from './Select.jsx'
+import Signup from '../pages/Signup.jsx';
 import LogoutBtn from './Header/LogoutBtn.jsx';
 
-export {Button , Container , Header, Footer , Input , PostForm , Protected , Login , Logo , Postcard , RTE , Select , LogoutBtn};
+export {Button , Container , Header, Footer , Input , PostForm , Protected , Login , Logo , Postcard , RTE , Select , Signup , LogoutBtn};
