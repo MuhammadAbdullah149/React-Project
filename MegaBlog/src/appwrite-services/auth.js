@@ -1,7 +1,7 @@
 import { Client, Account, ID } from "appwrite";
 import conf from "../conf/conf.js";
 
-export class AuthServices {
+export class AServices {
 
   client = new Client();
   account;
@@ -35,7 +35,7 @@ export class AuthServices {
   //log in
   async login({ email, password }) {
     try {
-      return await this.account.createEmailPasswordSession(email, password);
+      return await this.account.createEmailPasswordSession({email, password});
     } catch (error) {
       throw error;
     }
@@ -63,6 +63,6 @@ export class AuthServices {
 
 }
 
-const authServices = new AuthServices();
+const AuthServices = new AServices();
 
-export default authServices;
+export default AuthServices;

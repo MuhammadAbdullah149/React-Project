@@ -5,7 +5,7 @@ import Services from "../appwrite-services/config";
 function Home() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    Services.getPost().then((post) => {
+    Services.getAllPosts().then((post) => {
       if (post) {
         setPosts(post.documents);
       }
@@ -14,7 +14,7 @@ function Home() {
 
   if (posts.length === 0) {
     return (
-      <div className="w-full py-8 mt-4 text-center">
+      <div className="w-full py-25 mt-4 text-center">
         <Container>
           <div className="flex flex-wrap">
             <div className="p-2 w-full">

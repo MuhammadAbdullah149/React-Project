@@ -3,7 +3,7 @@ import { Button, Input, Logo } from "./index";
 import { Link, useNavigate } from "react-router-dom";
 import { login as storelogin } from "../store/authSlice";
 import { useDispatch } from "react-redux";
-import authServices from "../appwrite-services/auth";
+import AuthServices from "../appwrite-services/auth";
 import { useForm } from "react-hook-form";
 
 function Login() {
@@ -16,9 +16,9 @@ function Login() {
   const login = async (data) => {
     setError("");
     try {
-      const session = await authServices.login(data);
+      const session = await AuthServices.login(data);
       if (session) {
-        const userData = await authServices.getCurrentUser();
+        const userData = await AuthServices.getCurrentUser();
         if (userData) dispatch(storelogin(userData));
         navigate("/");
       }

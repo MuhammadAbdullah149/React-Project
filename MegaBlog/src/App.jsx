@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer'
 import {useDispatch} from 'react-redux'
 import authServices from './appwrite-services/auth'
 import {login , logout} from './store/authSlice'
+import { Outlet } from 'react-router-dom'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -30,7 +31,7 @@ function App() {
       <div className='w-full block text-center'>
         <Header/>
         <main>
-          TODO :{/* <Outlet/> */}
+          <Outlet/> 
         </main>
         <Footer/>
       </div>

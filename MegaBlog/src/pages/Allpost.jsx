@@ -4,12 +4,14 @@ import { Postcard, Container } from "../components";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
-  useEffect(() => {}, []);
-  Services.getAllPosts([]).then((posts) => {
-    if (posts) {
-      setPosts(posts.documents);
-    }
-  });
+  useEffect(() => {
+    Services.getAllPosts([]).then((posts) => {
+      if (posts) {
+        setPosts(posts.documents);
+      }
+    });
+  }, []);
+  
 
   return (
     <div className="w-full py-8">

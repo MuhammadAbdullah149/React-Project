@@ -3,7 +3,7 @@ import { Button, Input, Logo } from "./index";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../store/authSlice";
 import { useDispatch } from "react-redux";
-import authServices from "../appwrite-services/auth";
+import AuthServices from "../appwrite-services/auth";
 import { useForm } from "react-hook-form";
 
 function Signup() {
@@ -15,9 +15,9 @@ function Signup() {
   const create = async (data) => {
     setError("");
     try {
-      const session = await authServices.creatAccount(data);
+      const session = await AuthServices.creatAccount(data);
       if (session) {
-        const userData = await authServices.getCurrentUser();
+        const userData = await AuthServices.getCurrentUser();
         if (userData) dispatch(login(data));
         navigate("/");
       }

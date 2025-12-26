@@ -50,15 +50,17 @@ export class Services {
     }
   }
 
-  async getPost(slug) {
+  async getPost(documentId) {
     try {
       return await this.databases.getDocument(
         conf.appwriteDataBaseId,
         conf.appwriteCollectionId,
-        slug
+        documentId
       );
     } catch (error) {
+      console.log("Appwrite serive :: getPost :: error", error);
       throw error;
+      return false
     }
   }
 
