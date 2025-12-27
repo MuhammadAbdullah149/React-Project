@@ -7,7 +7,7 @@ function AllPosts() {
   useEffect(() => {}, []);
   AppwriteServices.getAllPosts([]).then((posts) => {
     if (posts) {
-      setPosts(posts.documents);
+      setPosts(posts.rows);
     }
   });
   
@@ -16,9 +16,11 @@ function AllPosts() {
     <div className="w-full py-8">
       <Container>
         <div className="flex flex-wrap">
-          {posts.map((post) => (
-            <div key={post.$id} className="p-2 w-1/4">
-              <Postcard post={post} />
+          {/* {console.log(posts)} */}
+          {
+          posts.map((post) => (
+            <div key={post.$id} className="p-2 w-full md:w-1/2 lg:w-1/4 bg-[#0065F8] rounded-2xl ">
+              <Postcard {...post} />
             </div>
           ))}
         </div>
