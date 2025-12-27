@@ -1,6 +1,6 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import { Editor } from "tinymce";
+import { Editor } from "@tinymce/tinymce-react"
 
 export default function RTE({ name, lable, control, defaultValue = "" }) {
   return (
@@ -12,11 +12,11 @@ export default function RTE({ name, lable, control, defaultValue = "" }) {
         control={control}
         render={({ field: { onChange } }) => (
           <Editor
-            initialValue={defaultValue}
+            apiKey="xkppyszct6uhpzrkm6u8j4r5vp2d4ba6gdgtjtfkramqbzts"
+            initialValue="<p>This is the initial content of the editor.</p>"
             init={{
-              initialValue: defaultValue,
               height: 500,
-              menubar: true,
+              menubar: false,
               plugins: [
                 "image",
                 "advlist",
@@ -44,7 +44,7 @@ export default function RTE({ name, lable, control, defaultValue = "" }) {
               content_style:
                 "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
             }}
-            onEditorChange={onChange}
+        
           />
         )}
       />

@@ -1,4 +1,4 @@
-import React, { use, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, Select, RTE } from "../index";
 import AppwriteServices from "../../appwrite-services/config";
@@ -20,13 +20,13 @@ function PostForm({ post }) {
   const userData = useSelector((state) => state.auth.userData);
   const submit = async (data) => {
     if (post) {
-      const file = data.image[0] ? AppwriteServices.uploadFile(data.image[0]) : null;
+      const file = data.image[0] ? await AppwriteServices.uploadFile(data.image[0]) : null;
       if (file) {
-        AppwriteServices.deleteFile(post.featuredImageId);
+        AppwriteServices.deleteFile(post.featuredImg);
       }
-      const dbPost = await AppwriteServices.updatepost(post.$id, {
+      const dbPost = await AppwriteServices.updatePost(post.$id, {
         ...data,
-        featuredImage: file ? file.$id : undefined,
+        featuredImg: file ? file.$id : undefined,
       });
       if (dbPost) {
         navigate(`/post/${dbPost.$id}`);
@@ -38,8 +38,8 @@ function PostForm({ post }) {
 
       if (file) {
         const fileid = file.$id;
-        data.featuredImage = fileid;
-        const dbPost = await AppwriteServices.creatPost({
+        data.featuredImg = fileid;
+        const dbPost = await AppwriteServices.createPost({
           ...data,
           userId: userData.$id,
         });
@@ -74,13 +74,13 @@ function PostForm({ post }) {
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
       <div className="w-2/3 px-2">
         <Input
-          label="Title :"
+          label="Title : "
           placeholder="Title"
           className="mb-4"
           {...register("title", { required: true })}
         />
         <Input
-          label="Slug :"
+          label="Slug : "
           placeholder="Slug"
           className="mb-4"
           {...register("slug", { required: true })}
@@ -101,14 +101,14 @@ function PostForm({ post }) {
         <Input
           label="Featured Image :"
           type="file"
-          className="mb-4"
+          className="mb-4 w-full"
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("image", { required: !post })}
         />
         {post && (
           <div className="w-full mb-4">
             <img
-              src={AppwriteService.getFilePreview(post.featuredImage)}
+              src={AppwriteServices.getFilePreview(post.featuredImg)}
               alt={post.title}
               className="rounded-lg"
             />
