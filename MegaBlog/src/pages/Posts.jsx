@@ -35,7 +35,7 @@ function Post() {
   return post ? (
     <div className="py-8">
       <Container>
-        <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+        <div className="w-full flex justify-center mb-4 relative border bg-[#7ce9c8] rounded-xl p-2">
           <img
             src={AppwriteServices.getFilePreview(post.featuredImg)}
             alt={post.title}

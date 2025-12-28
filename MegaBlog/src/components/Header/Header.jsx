@@ -51,7 +51,7 @@ function Header() {
           <ul className="flex ml-auto">
             {navItems.map((item)=>
               item.active ? (
-                <li key={item.name} >
+                <li key={item.name} className="flex items-center">
                   <button 
                     className="inline-block px-6 py-2 duration-150 rounded-full font-bold text-[#00FFDE] hover:bg-[#00FFDE] hover:text-[#4300FF]"
                   onClick={()=> navigate(item.slug)}>
@@ -61,7 +61,7 @@ function Header() {
               ) : null
             )}{
               authStatus && (
-                <li>
+                <li className="flex items-center">
                   <LogoutBtn/>
                 </li>)
             }
