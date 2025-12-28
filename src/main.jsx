@@ -12,7 +12,7 @@ import Login from './pages/Login.jsx'
 import Signup from './components/Signup.jsx'
 import AllPosts from './pages/Allpost.jsx'
 import AddPost from './pages/Addpost.jsx'
-import EditPost from './pages/EditPost.jsx'
+import EditPost from './pages/Editpost.jsx'
 import Post from './pages/Posts.jsx'
 
 const router = createBrowserRouter([
