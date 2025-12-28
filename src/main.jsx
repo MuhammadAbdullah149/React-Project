@@ -11,7 +11,7 @@ import Protected from './components/AuthLayout.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './components/Signup.jsx'
 import AllPosts from './pages/Allpost.jsx'
-import AddPost from './pages/AddPost.jsx'
+import AddPost from './pages/Addpost.jsx'
 import EditPost from './pages/EditPost.jsx'
 import Post from './pages/Posts.jsx'
 
